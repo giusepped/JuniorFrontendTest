@@ -5,7 +5,7 @@
 In your terminal do the following
 
 ```bash
-$ https://github.com/giusepped/JuniorFrontendTest
+$ git clone https://github.com/giusepped/JuniorFrontendTest
 $ cd JuniorFrontendTest
 $ python -m SimpleHTTPServer 1337
 ```
