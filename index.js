@@ -60,9 +60,9 @@ function populateReposTable(repos) {
 
 function createReposTable(repos, fragment) {
   for(var i = 0, j = repos.length; i < j; i++){
-    var tr = document.createElement('tr'),
-        tdName = document.createElement('td'),
-        tdStarsForks = document.createElement('td');
+    var tr = document.createElement("tr"),
+        tdName = document.createElement("td"),
+        tdStarsForks = document.createElement("td");
     tdName.innerHTML = repos[i].name;
     tdStarsForks.innerHTML = starsAndForks(repos[i].stargazers_count, repos[i].forks_count);
     tdStarsForks.className += " text-right";
