@@ -14,7 +14,7 @@ Visit http://localhost:1337/
 
 ## Approach
 
-* For the script file `index.js` I used pure raw javascript in order to get the elements from the DOM that I needed to get information from or manipulate.
+* For the script file `index.js` I used pure raw javascript in order to get the elements from the DOM that I needed to get information from or that I had to manipulate.
 * I tried to have my functions as modularised as possible in order for the code to be readable and maintainable.
 * I have a function `ajaxRequest(url)` that returns a promise because, in order to get information about both the user and their repos, two consecutive ajax calls to the API have to be made: the first one to get the user details and the second one to get the repos information.
 * Once I get back the data, I have other functions that process the information and populates the page. For the user, there is already a skeleton on the html page. For the repos, the tables rows gets created and populated and appended to a fragment, which in turn gets appended to the table body.
