@@ -1,4 +1,4 @@
-# JuniorFrontendTest
+# Pure Javascript Github User Search
 
 ## Installation
 
