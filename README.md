@@ -1,30 +1,29 @@
 # JuniorFrontendTest
 
-## GOALS
+## Installation
+
+In your terminal do the following
+
+```bash
+$ https://github.com/giusepped/JuniorFrontendTest
+$ cd JuniorFrontendTest
+$ python -m SimpleHTTPServer 1337
+```
+
+Visit http://localhost:1337/
+
+## Approach
+
+* For the script file `index.js` I used pure raw javascript in order to get the elements from the DOM that I needed to get information from or manipulate.
+* I tried to have my functions as modularised as possible in order for the code to be readable and maintainable.
+* I have a function `ajaxRequest(url)` that returns a promise because, in order to get information about both the user and their repos, two consecutive ajax calls to the API have to be made: the first one to get the user details and the second one to get the repos information.
+* Once I get back the data, I have other functions that process the information and populates the page. For the user, there is already a skeleton on the html page. For the repos, the tables rows gets created and populated and appended to a fragment, which in turn gets appended to the table body.
+* I also added the functionality to press Enter in order to search and the text field clears itself after searching.
+* I used bootstrap in order to mockup a design as close as possible to the given one (see screenshots below).
 
 
-#### The main goal of this tech test is to create a client side web application that reproduces the screenshots below by using [GitHub API](https://developer.github.com/v3/) .
 
-We will only evaluate the client side code and the criteria will be based mainly on:
-
-1. Clean, maintainable & easy­to­read
-2. Good architectural practices
-3. Clean HTML and CSS markup
-
-## HOW TO START
-
-1. Investigate the github api calls for user and repos (for example: test them in the browser)
-2. Fork this repository & cd into the directory
-3. Launch the web application, for example with: python -m SimpleHTTPServer 1337
-4. Open the browser with http://localhost:1337/ and start coding!
-
-## NOT REQUIRED, BUT IMPRESSIVE
-
-- Adding Unit Testing
-- Good use of pure Javascript language
-
-
-## SCREENSHOTS
+## SCREENSHOTS OF MY APP
 
 #### First Screen
 
