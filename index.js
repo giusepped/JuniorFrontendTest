@@ -22,6 +22,7 @@ document.addEventListener("keydown", function (e) {
 
 function searchFunction() {
   var searchUrl = "https://api.github.com/users/" + userSearched.value;
+  clearSearch();
   ajaxRequest(searchUrl).then(function(user) {
     displayUserResults(user);
     ajaxRequest(user.repos_url).then(function(repos) {
@@ -82,6 +83,25 @@ function starsAndForks(stars, forks){
       forkIcon = "<span class='octicon octicon-repo-forked'></span>",
       text = starIcon + " " + stars + " " + forkIcon + " " + forks;
   return text;
+}
+
+function clearSearch() {
+  clearReposTable();
+  avatar.src = "";
+  userSearched.value = "";
+  userSearched.focus();
+  hideContainers();
+}
+
+function hideContainers() {
+  searchResultContainer.style.display = "none";
+  errorMessageContainer.style.display = "none";
+}
+
+function clearReposTable() {
+  while(tableReposBody.firstChild) {
+    tableReposBody.removeChild(tableReposBody.firstChild);
+  }
 }
 
 function displayError() {
