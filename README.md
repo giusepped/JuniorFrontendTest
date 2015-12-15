@@ -20,6 +20,8 @@ Visit http://localhost:1337/
 * Once I get back the data, I have other functions that process the information and populates the page. For the user, there is already a skeleton on the html page. For the repos, the tables rows gets created and populated and appended to a fragment, which in turn gets appended to the table body.
 * I also added the functionality that the text field clears itself after searching.
 * I used bootstrap in order to mockup a design as close as possible to the given one (see screenshots below).
+* I wanted to make a version using JQuery but didn't have enough time, will probably do that in the future.
+
 
 
 
