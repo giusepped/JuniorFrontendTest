@@ -21,6 +21,7 @@ Visit http://localhost:1337/
 * I also added the functionality that the text field clears itself after searching.
 * I used bootstrap in order to mockup a design as close as possible to the given one (see screenshots below).
 * I wanted to make a version using JQuery but didn't have enough time, will probably do that in the future.
+* Also, in the function `starsAndForks` I am using some html which is not best practice but again, because of time constraints.
 
 
 
