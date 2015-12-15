@@ -14,12 +14,6 @@ searchButton.addEventListener("click", function () {
   searchFunction();
 });
 
-document.addEventListener("keydown", function (e) {
-  if(e.keyCode === 13){
-    searchFunction();
-  }
-});
-
 function searchFunction() {
   var searchUrl = "https://api.github.com/users/" + userSearched.value;
   clearSearch();
