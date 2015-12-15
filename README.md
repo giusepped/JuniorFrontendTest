@@ -20,10 +20,12 @@ Visit http://localhost:1337/
 * Once I get back the data, I have other functions that process the information and populates the page. For the user, there is already a skeleton on the html page. For the repos, the tables rows gets created and populated and appended to a fragment, which in turn gets appended to the table body.
 * I also added the functionality that the text field clears itself after searching.
 * I used bootstrap in order to mockup a design as close as possible to the given one (see screenshots below).
+
+## Challenges
+
 * I wanted to make a version using JQuery but didn't have enough time, will probably do that in the future.
-* Also, in the function `starsAndForks` I am using some html which is not best practice but again, because of time constraints.
-
-
+* Also, in the function `starsAndForks` I am using some html which is not best practice and I am sure I could refactor with more time
+* Regarding testing, I did not have time to implement it but I made a pretty similar app with Angular in the past which has feature tests built in.
 
 
 ## SCREENSHOTS OF MY APP
