@@ -12,7 +12,7 @@ $ python -m SimpleHTTPServer 1337
 
 Visit http://localhost:1337/
 
-## View tests
+## Testing
 
 In order to view both unit tests and feature tests, type the following:
 
@@ -20,7 +20,7 @@ In order to view both unit tests and feature tests, type the following:
 $ open SpecRunner.html
 ```
 
-N.B.: If your defautl browser is Chrome, it might not load jasmine fixtures properly because of a security setting ( https://github.com/velesin/jasmine-jquery/issues/4 ). Opening with Firefox there aren't any issues.
+N.B.: If your defautl browser is Chrome, it might not load jasmine fixtures properly because of a security setting ( https://github.com/velesin/jasmine-jquery/issues/4 ). Opening with Firefox there aren't any issues. I have just started on feature tests so there is not full coverage for now but unit testing is fully covered.
 
 ## Approach
 
