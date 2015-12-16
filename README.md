@@ -12,6 +12,12 @@ $ python -m SimpleHTTPServer 1337
 
 Visit http://localhost:1337/
 
+## View tests
+
+```bash
+$ open SpecRunner.html
+```
+
 ## Approach
 
 * The objective of this branch is to separate the logic from the DOM so that unit testing with Jasmine is easier and the code is more solid and readable.
