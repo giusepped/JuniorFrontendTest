@@ -5,7 +5,7 @@
 In your terminal do the following
 
 ```bash
-$ git clone https://github.com/giusepped/JuniorFrontendTest
+$ git clone -b jquery-branch https://github.com/giusepped/JuniorFrontendTest
 $ cd JuniorFrontendTest
 $ python -m SimpleHTTPServer 1337
 ```
