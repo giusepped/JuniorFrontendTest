@@ -20,7 +20,7 @@ $ open SpecRunner.html
 
 ## Approach
 
-* The objective of this branch is to separate the logic from the DOM so that unit testing with Jasmine is easier and the code is more solid and readable.
+* The objective of this branch is to abstract and separate the logic from the DOM so that unit testing with Jasmine is easier and the code is more solid and readable.
 * Also, the event handling is done through JQuery this time since it will have to be included for Bootstrap anyway.
 
 

@@ -23,4 +23,11 @@ describe('Search', function() {
   it('should start with an empty bio', function() {
     expect(search.bio).toEqual("");
   });
+
+  it('should be able to set the username', function() {
+    search.setUsername("giusepped");
+    expect(serach.username).toEqual("giusepped");
+  });
+
+
 });
