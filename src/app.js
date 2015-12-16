@@ -2,42 +2,39 @@ $( document ).ready(function() {
 
   'use strict';
 
-  var search = new Search(),
-      searchResultContainer = $('.searchUserResult')[0],
-      errorMessageContainer = $('.errorMessage')[0],
-      tableReposBody = $('tbody')[0];
+  var search = new Search();
 
   $('#searchButton').click(function () {
     searchFunction();
   });
 
-  function searchFunction() {
-    var searchUrl = 'https://api.github.com/users/' + $('#userSearched').val();
-    clearResults();
-    ajaxRequest(searchUrl).then(function(user) {
-      search.setUserData(user);
-      displayUserResults();
-      ajaxRequest(user.repos_url).then(function(repos) {
-        search.sortReposArray(repos);
-        populateReposTable(repos);
-      });
-    });
-  }
+  // function searchFunction() {
+  //   var searchUrl = 'https://api.github.com/users/' + $('#userSearched').val();
+  //   clearResults();
+  //   ajaxRequest(searchUrl).then(function(user) {
+  //     search.setUserData(user);
+  //     displayUserResults();
+  //     ajaxRequest(user.repos_url).then(function(repos) {
+  //       search.sortReposArray(repos);
+  //       populateReposTable();
+  //     });
+  //   });
+  // }
 
-  function ajaxRequest(url) {
-    return new Promise(function(resolve) {
-      var xhr = new XMLHttpRequest();
-      xhr.onload = function() {
-        if(xhr.readyState === 4 && xhr.status === 200 ) {
-          resolve(JSON.parse(this.responseText));
-        } else {
-          displayError();
-        }
-      };
-      xhr.open("GET", url);
-      xhr.send();
-    });
-  }
+  // function ajaxRequest(url) {
+  //   return new Promise(function(resolve) {
+  //     var xhr = new XMLHttpRequest();
+  //     xhr.onload = function() {
+  //       if(xhr.readyState === 4 && xhr.status === 200 ) {
+  //         resolve(JSON.parse(this.responseText));
+  //       } else {
+  //         displayError();
+  //       }
+  //     };
+  //     xhr.open("GET", url);
+  //     xhr.send();
+  //   });
+  // }
 
   function populateUserDiv() {
     $('#avatar').attr('src', search.avatar);
@@ -48,48 +45,33 @@ $( document ).ready(function() {
 
   function displayUserResults() {
     populateUserDiv();
-    searchResultContainer.style.display = "block";
+    $('.searchUserResult').show();
   }
 
   function populateReposTable() {
-    var fragment = document.createDocumentFragment();
-    createReposTable(fragment);
-    tableReposBody.appendChild(fragment);
-  }
-
-  function createReposTable(fragment) {
     for(var i = 0, j = search.reposArray.length; i < j; i++){
-      var tr = document.createElement("tr"),
-          tdName = document.createElement("td"),
-          tdStarsForks = document.createElement("td");
-      tdName.innerHTML = search.reposArray[i].name;
-      tdStarsForks.innerHTML = search.reposArray[i].starsAndForks;
-      tdStarsForks.className += " text-right";
-      tr.appendChild(tdName);
-      tr.appendChild(tdStarsForks);
-      fragment.appendChild(tr);
+      var repoRow = $('<tr>').append(
+            $('<td>').text(search.reposArray[i].name),
+            $('<td>').html(search.reposArray[i].starsAndForks).addClass('text-right')
+        );
+      $('tbody').append(repoRow);
     }
   }
 
   function clearResults() {
+    search.clearReposArray();
     $("tbody tr").remove();
     $('#avatar').attr('src', '');
     hideContainers();
   }
 
-  // function clearReposTable() {
-  //   while(tableReposBody.firstChild) {
-  //     tableReposBody.removeChild(tableReposBody.firstChild);
-  //   }
-  // }
-
   function hideContainers() {
-    searchResultContainer.style.display = "none";
-    errorMessageContainer.style.display = "none";
+    $('.searchUserResult').hide();
+    $('.errorMessage').hide();
   }
 
   function displayError() {
-    errorMessageContainer.style.display = "block";
+    $('.errorMessage').show();
   }
 
 });

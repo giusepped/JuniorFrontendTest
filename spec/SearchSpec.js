@@ -91,7 +91,7 @@ describe('Search', function() {
       expect(search.reposArray).toEqual(resultArray);
     });
 
-    it('should clear the array of repos when clearReposArray() is called', function() {
+    it('should clear the array of repos when clearReposArray is called', function() {
       search.clearReposArray();
       expect(search.reposArray).toEqual([]);
     })
