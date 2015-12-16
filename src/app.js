@@ -2,19 +2,20 @@ $( document ).ready(function() {
 
   'use strict';
 
-  var searchResultContainer = $(".searchUserResult")[0],
-      errorMessageContainer = $(".errorMessage")[0],
-      username = $("#username"),
-      fullname = $("#fullname"),
-      userBio = $("#bio"),
-      tableReposBody = $("tbody")[0];
+  var search = new Search(),
+      searchResultContainer = $('.searchUserResult')[0],
+      errorMessageContainer = $('.errorMessage')[0],
+      username = $('#username'),
+      fullname = $('#fullname'),
+      userBio = $('#bio'),
+      tableReposBody = $('tbody')[0];
 
-  $("#searchButton").click(function () {
+  $('#searchButton').click(function () {
     searchFunction();
   });
 
   function searchFunction() {
-    var searchUrl = "https://api.github.com/users/" + $("#userSearched").val();
+    var searchUrl = 'https://api.github.com/users/' + $('#userSearched').val();
     clearSearch();
     ajaxRequest(searchUrl).then(function(user) {
       displayUserResults(user);
@@ -81,8 +82,6 @@ $( document ).ready(function() {
   function clearSearch() {
     clearReposTable();
     $('#avatar').attr('src', '');
-    userSearched.value = "";
-    userSearched.focus();
     hideContainers();
   }
 

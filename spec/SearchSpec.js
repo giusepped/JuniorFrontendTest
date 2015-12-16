@@ -76,7 +76,7 @@ describe('Search', function() {
       search.sortReposArray(dummyRepos);
     });
 
-    it('should return an array of repos data', function() {
+    it('should format the array of repos data correctly', function() {
       var resultArray = [
         {
           'name' : 'airport_challenge',
@@ -86,7 +86,7 @@ describe('Search', function() {
           'name' : 'angular_github_search',
           'starsAndForks': '0 <span class="octicon octicon-star"></span> 0 <span class="octicon octicon-repo-forked"></span>'
 
-        },
+        }
       ];
       expect(search.reposArray).toEqual(resultArray);
     });
