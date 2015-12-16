@@ -4,37 +4,19 @@ $( document ).ready(function() {
 
   var search = new Search();
 
+  var ajax_call = function(username) { $.ajax({
+      url: 'https://api.github.com/users/'+username,
+      dataType: 'json',
+      success: function(userData) {
+        search.setUserData(userData);
+        displayUserResults();
+      }
+    })
+  };
+
   $('#searchButton').click(function () {
-    searchFunction();
+    ajax_call($('#userSearched').val());
   });
-
-  // function searchFunction() {
-  //   var searchUrl = 'https://api.github.com/users/' + $('#userSearched').val();
-  //   clearResults();
-  //   ajaxRequest(searchUrl).then(function(user) {
-  //     search.setUserData(user);
-  //     displayUserResults();
-  //     ajaxRequest(user.repos_url).then(function(repos) {
-  //       search.sortReposArray(repos);
-  //       populateReposTable();
-  //     });
-  //   });
-  // }
-
-  // function ajaxRequest(url) {
-  //   return new Promise(function(resolve) {
-  //     var xhr = new XMLHttpRequest();
-  //     xhr.onload = function() {
-  //       if(xhr.readyState === 4 && xhr.status === 200 ) {
-  //         resolve(JSON.parse(this.responseText));
-  //       } else {
-  //         displayError();
-  //       }
-  //     };
-  //     xhr.open("GET", url);
-  //     xhr.send();
-  //   });
-  // }
 
   function populateUserDiv() {
     $('#avatar').attr('src', search.avatar);
