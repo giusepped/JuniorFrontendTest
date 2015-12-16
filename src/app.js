@@ -24,7 +24,6 @@ $( document ).ready(function() {
   };
 
   $('#searchButton').click(function () {
-    console.log("how many times?");
     clearResults();
     ajax_call($('#userSearched').val());
   });
