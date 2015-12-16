@@ -6,3 +6,7 @@ function Search() {
   this.avatar = "";
   this.bio = "";
 }
+
+Search.prototype.setUsername = function(username) {
+  this.username = username;
+}
