@@ -27,3 +27,7 @@ Search.prototype.sortReposArray = function(repos) {
   }
 }
 
+Search.prototype.clearReposArray = function() {
+  this.reposArray = [];
+}
+

@@ -14,7 +14,7 @@ Visit http://localhost:1337/
 
 ## View tests
 
-* In order to view both unit tests and feature tests, type the following:
+In order to view both unit tests and feature tests, type the following:
 
 ```bash
 $ open SpecRunner.html

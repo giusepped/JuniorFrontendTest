@@ -5,9 +5,6 @@ $( document ).ready(function() {
   var search = new Search(),
       searchResultContainer = $('.searchUserResult')[0],
       errorMessageContainer = $('.errorMessage')[0],
-      username = $('#username'),
-      fullname = $('#fullname'),
-      userBio = $('#bio'),
       tableReposBody = $('tbody')[0];
 
   $('#searchButton').click(function () {
@@ -16,10 +13,12 @@ $( document ).ready(function() {
 
   function searchFunction() {
     var searchUrl = 'https://api.github.com/users/' + $('#userSearched').val();
-    clearSearch();
+    clearResults();
     ajaxRequest(searchUrl).then(function(user) {
-      displayUserResults(user);
+      search.setUserData(user);
+      displayUserResults();
       ajaxRequest(user.repos_url).then(function(repos) {
+        search.sortReposArray(repos);
         populateReposTable(repos);
       });
     });
@@ -40,31 +39,31 @@ $( document ).ready(function() {
     });
   }
 
-  function populateUserDiv(user) {
-    $('#avatar').attr('src', user.avatar_url);
-    username.innerHTML = "@" + user.login;
-    fullname.innerHTML = user.name;
-    userBio.innerHTML = (user.bio === null) ? user.login + " has written no bio" : user.bio;
+  function populateUserDiv() {
+    $('#avatar').attr('src', search.avatar);
+    $('#username').text(search.username);
+    $('#fullname').text(search.fullname);
+    $('#bio').text(search.bio);
   }
 
-  function displayUserResults(user) {
-    populateUserDiv(user);
+  function displayUserResults() {
+    populateUserDiv();
     searchResultContainer.style.display = "block";
   }
 
-  function populateReposTable(repos) {
+  function populateReposTable() {
     var fragment = document.createDocumentFragment();
-    createReposTable(repos, fragment);
+    createReposTable(fragment);
     tableReposBody.appendChild(fragment);
   }
 
-  function createReposTable(repos, fragment) {
-    for(var i = 0, j = repos.length; i < j; i++){
+  function createReposTable(fragment) {
+    for(var i = 0, j = search.reposArray.length; i < j; i++){
       var tr = document.createElement("tr"),
           tdName = document.createElement("td"),
           tdStarsForks = document.createElement("td");
-      tdName.innerHTML = repos[i].name;
-      tdStarsForks.innerHTML = starsAndForks(repos[i].stargazers_count, repos[i].forks_count);
+      tdName.innerHTML = search.reposArray[i].name;
+      tdStarsForks.innerHTML = search.reposArray[i].starsAndForks;
       tdStarsForks.className += " text-right";
       tr.appendChild(tdName);
       tr.appendChild(tdStarsForks);
@@ -72,28 +71,21 @@ $( document ).ready(function() {
     }
   }
 
-  function starsAndForks(stars, forks){
-    var starIcon = '<span class="octicon octicon-star"></span>',
-        forkIcon = '<span class="octicon octicon-repo-forked"></span>',
-        text = starIcon + " " + stars + " " + forkIcon + " " + forks;
-    return text;
-  }
-
-  function clearSearch() {
-    clearReposTable();
+  function clearResults() {
+    $("tbody tr").remove();
     $('#avatar').attr('src', '');
     hideContainers();
   }
 
+  // function clearReposTable() {
+  //   while(tableReposBody.firstChild) {
+  //     tableReposBody.removeChild(tableReposBody.firstChild);
+  //   }
+  // }
+
   function hideContainers() {
     searchResultContainer.style.display = "none";
     errorMessageContainer.style.display = "none";
-  }
-
-  function clearReposTable() {
-    while(tableReposBody.firstChild) {
-      tableReposBody.removeChild(tableReposBody.firstChild);
-    }
   }
 
   function displayError() {
