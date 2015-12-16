@@ -9,15 +9,18 @@
   </head>
   <body>
     <div class="mainContainer col-md-4">
+
       <div class="input-group">
         <input id="userSearched" type="text" name="user" class="form-control" placeholder="Search username..." autofocus>
         <span class="input-group-btn">
           <button id="searchButton" class="btn btn-default" type="button">Search</button>
         </span>
       </div>
-            <div class="errorMessage alert alert-danger">
-          <p>Does not exist</p>
+
+      <div class="errorMessage alert alert-danger">
+        <p>Does not exist</p>
       </div>
+
       <div class="searchUserResult">
         <div class="media">
           <div class="media-left">
@@ -30,6 +33,7 @@
           </div>
         </div>
       </div>
+
       <table class="table">
         <thead>
           <tr>
@@ -40,9 +44,10 @@
         <tbody>
         </tbody>
       </table>
+
     </div>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="index.js"></script>
+    <script src="src/app.js"></script>
   </body>
 </html>
