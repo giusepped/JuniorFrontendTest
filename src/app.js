@@ -9,25 +9,37 @@ $( document ).ready(function() {
       dataType: 'json',
       success: function(userData) {
         search.setUserData(userData);
-        displayUserResults();
+        $.ajax({
+          url: userData.repos_url,
+          dataType: 'json',
+          success: function(reposData) {
+            search.sortReposArray(reposData);
+            displayUserResults();
+          }
+        });
+      }, error: function() {
+        displayError();
       }
-    })
+    });
   };
 
   $('#searchButton').click(function () {
+    console.log("how many times?");
+    clearResults();
     ajax_call($('#userSearched').val());
   });
+
+  function displayUserResults() {
+    populateUserDiv();
+    populateReposTable();
+    $('.searchUserResult').show();
+  }
 
   function populateUserDiv() {
     $('#avatar').attr('src', search.avatar);
     $('#username').text(search.username);
     $('#fullname').text(search.fullname);
     $('#bio').text(search.bio);
-  }
-
-  function displayUserResults() {
-    populateUserDiv();
-    $('.searchUserResult').show();
   }
 
   function populateReposTable() {
