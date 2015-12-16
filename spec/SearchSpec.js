@@ -27,32 +27,68 @@ describe('Search', function() {
     });
   });
 
-  describe('After searching', function() {
+  describe('After retrieving user data', function() {
 
     beforeEach(function() {
       var dummyUser = {
-        login : 'giusepped',
-        name : 'Giuseppe De Santis',
-        avatar_url : 'https://avatars.githubusercontent.com/u/3399076?v=3',
-        bio : null
+        'login': 'giusepped',
+        'name': 'Giuseppe De Santis',
+        'avatar_url': 'https://avatars.githubusercontent.com/u/3399076?v=3',
+        'bio': null
       };
       search.setUserData(dummyUser);
     });
 
-    it('should be able to set the username', function() {
+    it('should set the username', function() {
       expect(search.username).toEqual('@giusepped');
     });
 
-    it('should be able to set the full name', function() {
+    it('should set the full name', function() {
       expect(search.fullname).toEqual('Giuseppe De Santis');
     });
 
-    it('should be able to set the avatar', function() {
-      expect(search.avatar).toEqual("https://avatars.githubusercontent.com/u/3399076?v=3");
+    it('should set the avatar', function() {
+      expect(search.avatar).toEqual('https://avatars.githubusercontent.com/u/3399076?v=3');
     });
 
-    it('should be able to set the bio', function() {
+    it('should set the bio', function() {
       expect(search.bio).toEqual('giusepped has written no bio');
+    });
+
+  });
+
+  describe('After retrieving repos data', function() {
+
+    beforeEach(function() {
+      var dummyRepos = [
+        {
+          'name': 'airport_challenge',
+          'stargazers_count': 0,
+          'forks_count': 0
+        },
+        {
+          'name': 'angular_github_search',
+          'stargazers_count': 0,
+          'forks_count': 0
+        }
+      ];
+
+      search.sortReposArray(dummyRepos);
+    });
+
+    it('should return an array of repos data', function() {
+      var resultArray = [
+        {
+          'name' : 'airport_challenge',
+          'starsAndForks': '0 <span class="octicon octicon-star"></span> 0 <span class="octicon octicon-repo-forked"></span>'
+        },
+        {
+          'name' : 'angular_github_search',
+          'starsAndForks': '0 <span class="octicon octicon-star"></span> 0 <span class="octicon octicon-repo-forked"></span>'
+
+        },
+      ];
+      expect(search.reposArray).toEqual(resultArray);
     });
 
   });
