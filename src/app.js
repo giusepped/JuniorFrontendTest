@@ -1,3 +1,5 @@
+$( document ).ready(function() {
+
 'use strict';
 
 var searchResultContainer = document.getElementsByClassName("searchUserResult")[0],
@@ -73,8 +75,8 @@ function createReposTable(repos, fragment) {
 }
 
 function starsAndForks(stars, forks){
-  var starIcon = "<span class='octicon octicon-star'></span>",
-      forkIcon = "<span class='octicon octicon-repo-forked'></span>",
+  var starIcon = '<span class="octicon octicon-star"></span>',
+      forkIcon = '<span class="octicon octicon-repo-forked"></span>',
       text = starIcon + " " + stars + " " + forkIcon + " " + forks;
   return text;
 }
@@ -101,3 +103,5 @@ function clearReposTable() {
 function displayError() {
   errorMessageContainer.style.display = "block";
 }
+
+});

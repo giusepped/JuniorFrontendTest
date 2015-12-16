@@ -40,7 +40,7 @@ describe('Search', function() {
     });
 
     it('should be able to set the username', function() {
-      expect(search.username).toEqual('giusepped');
+      expect(search.username).toEqual('@giusepped');
     });
 
     it('should be able to set the full name', function() {
