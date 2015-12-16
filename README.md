@@ -20,6 +20,8 @@ In order to view both unit tests and feature tests, type the following:
 $ open SpecRunner.html
 ```
 
+N.B.: If your defautl browser is Chrome, it might not load jasmine fixtures properly because of a security setting ( https://github.com/velesin/jasmine-jquery/issues/4 ). Opening with Firefox there aren't any issues.
+
 ## Approach
 
 * The objective of this branch is to abstract and separate the logic from the DOM so that unit testing with Jasmine is easier and the code is more solid and readable.

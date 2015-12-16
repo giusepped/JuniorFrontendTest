@@ -10,7 +10,11 @@ describe('Github search feature tests', function(){
   });
 
   it('should have the error message hidden by default', function() {
-    expect('.errorMessage').toHaveCss({display: "none"});
+    expect('.errorMessage').toBeHidden();
+  });
+
+  it('should have the search result container hidden by default', function() {
+    expect('.searchUserResult').toBeHidden();
   });
 
 });
