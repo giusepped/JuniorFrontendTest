@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var searchResultContainer = document.getElementsByClassName("searchUserResult")[0],
     errorMessageContainer = document.getElementsByClassName("errorMessage")[0],
