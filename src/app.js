@@ -14,7 +14,7 @@ $( document ).ready(function() {
           dataType: 'json',
           success: function(reposData) {
             search.sortReposArray(reposData);
-            displayUserResults();
+            displayResults();
           }
         });
       }, error: function() {
@@ -28,7 +28,7 @@ $( document ).ready(function() {
     ajax_call($('#userSearched').val());
   });
 
-  function displayUserResults() {
+  function displayResults() {
     populateUserDiv();
     populateReposTable();
     $('.searchUserResult').show();
