@@ -31,7 +31,7 @@ describe('Github search feature tests', function() {
       expect($.ajax).toHaveBeenCalled();
     });
 
-    it('should display the error message if the username does not exist', function() {
+    it('should display the error message', function() {
       expect('.errorMessage').toBeVisible();
     });
 
@@ -59,7 +59,7 @@ describe('Github search feature tests', function() {
       spyOn($, 'ajax').and.callFake(function(url) {
         search.setUserData(dummyUser);
         search.sortReposArray(dummyRepos);
-        displayResults();
+        // displayResults();
       });
       $('#userSearched').val('giusepped');
       $('#searchButton').click();
@@ -73,12 +73,12 @@ describe('Github search feature tests', function() {
       expect('.errorMessage').toBeHidden();
     });
 
-    it('should display the result container', function() {
+    xit('should display the result container', function() {
       expect('.searchUserResult').toBeVisible();
     });
 
-    xit('should only add as many repos as from the collected data', function() {
-      expect('tbody tr'.length).toEqual(8);
+    xit('should only add as many rows as repos in the collected data', function() {
+      expect('tbody tr'.length).toEqual(2);
     });
   });
 
