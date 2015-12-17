@@ -15,6 +15,7 @@ $( document ).ready(function() {
           success: function(reposData) {
             search.sortReposArray(reposData);
             displayResults();
+            console.log($('tbody tr').length);
           }
         });
       }, error: function() {
@@ -28,11 +29,11 @@ $( document ).ready(function() {
     ajax_call($('#userSearched').val());
   });
 
-  function displayResults() {
+  window.displayResults = function() {
     populateUserDiv();
     populateReposTable();
     $('.searchUserResult').show();
-  }
+  };
 
   function populateUserDiv() {
     $('#avatar').attr('src', search.avatar);
@@ -53,7 +54,7 @@ $( document ).ready(function() {
 
   function clearResults() {
     search.clearReposArray();
-    $("tbody tr").remove();
+    $('tbody tr').remove();
     $('#avatar').attr('src', '');
     hideContainers();
   }

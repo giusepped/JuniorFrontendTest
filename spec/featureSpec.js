@@ -59,6 +59,7 @@ describe('Github search feature tests', function() {
       spyOn($, 'ajax').and.callFake(function(url) {
         search.setUserData(dummyUser);
         search.sortReposArray(dummyRepos);
+        displayResults();
       });
       $('#userSearched').val('giusepped');
       $('#searchButton').click();
@@ -74,6 +75,10 @@ describe('Github search feature tests', function() {
 
     it('should display the result container', function() {
       expect('.searchUserResult').toBeVisible();
+    });
+
+    xit('should only add as many repos as from the collected data', function() {
+      expect('tbody tr'.length).toEqual(8);
     });
   });
 
