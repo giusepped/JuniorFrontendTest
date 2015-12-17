@@ -14,8 +14,8 @@ Visit http://localhost:1337/
 
 ## Testing
 
-* I tried to separate the app logic as much as I could so that I could unit test it properly (check `spec/SearchSpec.js`)
-* I also made feature tests to check what happens when the app is actually used (check `spec/featureSpec.js`). I had to mock the ajax request in both the cases of error and success in order to feature test properly.
+* I tried to separate the app logic as much as I could so that I could unit test it properly. Here I check that the user data and the repos data are formatted correctly and stored as attributes of the Search Object (check `spec/SearchSpec.js`).
+* I also made feature tests to check what happens when the app is actually used. I had to mock the ajax request in both the cases of error and success in order to feature test properly. In the feature tests, I check that the ajax call gets done at the correct times and that the correct divs are either visible or hidden when they are expected to (check `spec/featureSpec.js`).
 
 In order to view both unit tests and feature tests, type the following:
 
@@ -23,7 +23,7 @@ In order to view both unit tests and feature tests, type the following:
 $ open SpecRunner.html
 ```
 
-N.B.: If your defautl browser is Chrome, it might not load jasmine fixtures properly because of a security setting ( https://github.com/velesin/jasmine-jquery/issues/4 ). Opening with Firefox there aren't any issues.
+N.B.: If your defautl browser is Chrome, it might not load jasmine fixtures properly because of a security setting ( https://github.com/velesin/jasmine-jquery/issues/4 ). In this case, I suggest to just open the file with Firefox as there aren't any issues there.
 
 ## Approach
 
