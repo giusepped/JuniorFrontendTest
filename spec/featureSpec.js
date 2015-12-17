@@ -18,53 +18,63 @@ describe('Github search feature tests', function() {
     });
   });
 
-  describe('after searching', function() {
-    it('should display the error message if the username does not exist', function() {
+  describe('after searching, if the username does not exist', function() {
+    beforeEach(function() {
       spyOn($, 'ajax').and.callFake(function(e) {
           e.error({});
       });
       $('#userSearched').val('òòasfkòas');
       $('#searchButton').click();
+    });
+
+    it('should have made the ajax call', function() {
       expect($.ajax).toHaveBeenCalled();
+    });
+
+    it('should display the error message if the username does not exist', function() {
       expect('.errorMessage').toBeVisible();
     });
 
-    describe('after searching, if the username exists', function() {
-      beforeEach(function() {
-        var search = new Search();
-        var dummyUser = {
-          'login': 'giusepped',
-          'name': 'Giuseppe De Santis',
-          'avatar_url': 'https://avatars.githubusercontent.com/u/3399076?v=3',
-          'bio': null
-        };
-        var dummyRepos = [
-          {
-            'name': 'airport_challenge',
-            'stargazers_count': 0,
-            'forks_count': 0
-          },
-          {
-            'name': 'angular_github_search',
-            'stargazers_count': 0,
-            'forks_count': 0
-          }
-        ];
-        spyOn($, 'ajax').and.callFake(function(url) {
-          search.setUserData(dummyUser);
-          search.sortReposArray(dummyRepos);
-          displayResults();
-        });
-        $('#userSearched').val('giusepped');
-        $('#searchButton').click();
-      });
+    it('should still hide the search user result container', function() {
+      expect('.searchUserResult').toBeHidden();
+    });
+  });
 
-      xit('should display the result container', function() {
-        expect($.ajax).toHaveBeenCalled();
-        expect('.searchUserResult').toBeVisible();
+  describe('after searching, if the username exists', function() {
+    beforeEach(function() {
+      var search = new Search();
+      var dummyUser = {
+        'login': 'giusepped', 'name': 'Giuseppe De Santis',
+        'avatar_url': 'https://avatars.githubusercontent.com/u/3399076?v=3',
+        'bio': null
+      };
+      var dummyRepos = [
+        {
+          'name': 'airport_challenge', 'stargazers_count': 0, 'forks_count': 0
+        },
+        {
+          'name': 'angular_github_search', 'stargazers_count': 0, 'forks_count': 0
+        }
+      ];
+      spyOn($, 'ajax').and.callFake(function(url) {
+        search.setUserData(dummyUser);
+        search.sortReposArray(dummyRepos);
       });
+      $('#userSearched').val('giusepped');
+      $('#searchButton').click();
     });
 
+    it('should have made the ajax call', function() {
+      expect($.ajax).toHaveBeenCalled();
+    });
+
+    it('should still hide the error message', function() {
+      expect('.errorMessage').toBeHidden();
+    });
+
+    it('should display the result container', function() {
+      expect('.searchUserResult').toBeVisible();
+    });
   });
 
 });
