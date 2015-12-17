@@ -1,6 +1,6 @@
-'use strict';
-
 describe('Github search feature tests', function() {
+
+  'use strict';
 
   beforeEach(function() {
     jasmine.getFixtures().fixturesPath = '.';
@@ -56,10 +56,11 @@ describe('Github search feature tests', function() {
           'name': 'angular_github_search', 'stargazers_count': 0, 'forks_count': 0
         }
       ];
-      spyOn($, 'ajax').and.callFake(function(url) {
+
+      spyOn($, 'ajax').and.callFake(function(e) {
         search.setUserData(dummyUser);
         search.sortReposArray(dummyRepos);
-        // displayResults();
+        e.success({});
       });
       $('#userSearched').val('giusepped');
       $('#searchButton').click();
@@ -73,12 +74,8 @@ describe('Github search feature tests', function() {
       expect('.errorMessage').toBeHidden();
     });
 
-    xit('should display the result container', function() {
+    it('should display the result container', function() {
       expect('.searchUserResult').toBeVisible();
-    });
-
-    xit('should only add as many rows as repos in the collected data', function() {
-      expect('tbody tr'.length).toEqual(2);
     });
   });
 

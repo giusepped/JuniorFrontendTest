@@ -4,7 +4,7 @@ $( document ).ready(function() {
 
   var search = new Search();
 
-  var ajax_call = function(username) { $.ajax({
+  var ajaxCall = function(username) { $.ajax({
       url: 'https://api.github.com/users/' + username,
       dataType: 'json',
       success: function(userData) {
@@ -25,14 +25,14 @@ $( document ).ready(function() {
 
   $('#searchButton').click(function () {
     clearResults();
-    ajax_call($('#userSearched').val());
+    ajaxCall($('#userSearched').val());
   });
 
-  function displayResults() {
+   function displayResults() {
     populateUserDiv();
     populateReposTable();
     $('.searchUserResult').show();
-  };
+  }
 
   function populateUserDiv() {
     $('#avatar').attr('src', search.avatar);

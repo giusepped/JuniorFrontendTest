@@ -1,6 +1,6 @@
-'use strict';
-
 describe('Search', function() {
+
+  'use strict';
 
   var search;
 
@@ -78,14 +78,11 @@ describe('Search', function() {
 
     it('should format the array of repos data correctly', function() {
       var resultArray = [
-        {
-          'name' : 'airport_challenge',
+        { 'name' : 'airport_challenge',
           'starsAndForks': '0 <span class="octicon octicon-star"></span> 0 <span class="octicon octicon-repo-forked"></span>'
         },
-        {
-          'name' : 'angular_github_search',
+        { 'name' : 'angular_github_search',
           'starsAndForks': '0 <span class="octicon octicon-star"></span> 0 <span class="octicon octicon-repo-forked"></span>'
-
         }
       ];
       expect(search.reposArray).toEqual(resultArray);

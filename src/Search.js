@@ -15,7 +15,7 @@ Search.prototype.setUserData = function(user) {
   this.fullname = (user.name === null) ? 'no full name' : user.name;
   this.avatar = user.avatar_url;
   this.bio = (user.bio === null) ? user.login + ' has written no bio' : user.bio;
-}
+};
 
 Search.prototype.sortReposArray = function(repos) {
   for(var i = 0, j = repos.length; i < j; i++){
@@ -25,9 +25,9 @@ Search.prototype.sortReposArray = function(repos) {
     };
     this.reposArray.push(repoObject);
   }
-}
+};
 
 Search.prototype.clearReposArray = function() {
   this.reposArray = [];
-}
+};
 
