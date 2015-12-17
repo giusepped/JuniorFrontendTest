@@ -20,7 +20,7 @@ describe('Github search feature tests', function() {
 
   describe('after searching', function() {
     it('should display the error message if the username does not exist', function() {
-      spyOn($, "ajax").and.callFake(function(e) {
+      spyOn($, 'ajax').and.callFake(function(e) {
           e.error({});
       });
       $('#userSearched').val('òòasfkòas');
@@ -48,7 +48,7 @@ describe('Github search feature tests', function() {
           'forks_count': 0
         }
       ];
-      spyOn($, "ajax").and.callFake(function(url) {
+      spyOn($, 'ajax').and.callFake(function(url) {
         search.setUserData(dummyUser);
         search.sortReposArray(dummyRepos);
         displayResults();

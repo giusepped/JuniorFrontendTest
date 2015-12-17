@@ -5,7 +5,7 @@ $( document ).ready(function() {
   var search = new Search();
 
   var ajax_call = function(username) { $.ajax({
-      url: 'https://api.github.com/users/'+username,
+      url: 'https://api.github.com/users/' + username,
       dataType: 'json',
       success: function(userData) {
         search.setUserData(userData);

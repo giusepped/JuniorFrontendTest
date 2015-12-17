@@ -27,7 +27,7 @@ describe('Search', function() {
     });
   });
 
-  describe('After retrieving user data', function() {
+  describe('After receiving user data', function() {
 
     beforeEach(function() {
       var dummyUser = {
@@ -57,7 +57,7 @@ describe('Search', function() {
 
   });
 
-  describe('After retrieving repos data', function() {
+  describe('After receiving repos data', function() {
 
     beforeEach(function() {
       var dummyRepos = [
