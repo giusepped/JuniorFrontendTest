@@ -2,7 +2,7 @@
 
 describe('Github search feature tests', function() {
 
-  beforeEach(function(){
+  beforeEach(function() {
     jasmine.getFixtures().fixturesPath = '.';
     loadFixtures('index.html');
     $.holdReady(false);
@@ -25,39 +25,46 @@ describe('Github search feature tests', function() {
       });
       $('#userSearched').val('òòasfkòas');
       $('#searchButton').click();
+      expect($.ajax).toHaveBeenCalled();
       expect('.errorMessage').toBeVisible();
     });
 
-    xit('should display the user result container if the username exists', function() {
-      var search = new Search();
-      var dummyUser = {
-        'login': 'giusepped',
-        'name': 'Giuseppe De Santis',
-        'avatar_url': 'https://avatars.githubusercontent.com/u/3399076?v=3',
-        'bio': null
-      };
-      var dummyRepos = [
-        {
-          'name': 'airport_challenge',
-          'stargazers_count': 0,
-          'forks_count': 0
-        },
-        {
-          'name': 'angular_github_search',
-          'stargazers_count': 0,
-          'forks_count': 0
-        }
-      ];
-      spyOn($, 'ajax').and.callFake(function(url) {
-        search.setUserData(dummyUser);
-        search.sortReposArray(dummyRepos);
-        displayResults();
+    describe('after searching, if the username exists', function() {
+      beforeEach(function() {
+        var search = new Search();
+        var dummyUser = {
+          'login': 'giusepped',
+          'name': 'Giuseppe De Santis',
+          'avatar_url': 'https://avatars.githubusercontent.com/u/3399076?v=3',
+          'bio': null
+        };
+        var dummyRepos = [
+          {
+            'name': 'airport_challenge',
+            'stargazers_count': 0,
+            'forks_count': 0
+          },
+          {
+            'name': 'angular_github_search',
+            'stargazers_count': 0,
+            'forks_count': 0
+          }
+        ];
+        spyOn($, 'ajax').and.callFake(function(url) {
+          search.setUserData(dummyUser);
+          search.sortReposArray(dummyRepos);
+          displayResults();
+        });
+        $('#userSearched').val('giusepped');
+        $('#searchButton').click();
       });
-      $('#userSearched').val('giusepped');
-      $('#searchButton').click();
-      expect($.ajax).toHaveBeenCalled();
-      expect('.searchUserResult').toBeVisible();
+
+      xit('should display the result container', function() {
+        expect($.ajax).toHaveBeenCalled();
+        expect('.searchUserResult').toBeVisible();
+      });
     });
+
   });
 
 });
